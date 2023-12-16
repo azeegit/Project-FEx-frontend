@@ -1,22 +1,14 @@
-import React from "react";
-
-
+import React from 'react';
 
 const Hero = () => {
     return (
-        <div className='text-white'>
-            <div className="max-w-[800px] mt-[-96px] w-full h-screen mx-auto text-center flex flex-col justify-center">
-                <p className="text-[#00df9a] font-bold p-2">Invest in Future</p>
-                <h1 className="md:text-7xl sm:text-6xl text-4xl font-bold md:py-6">Invest in Yourself</h1>
-                <div className="flex justify-center items-center">
-                    <p className="md:text-5xl sm:text-4xl text-xl font-bold py-4"> Investing for : </p>
-                    
-                </div>
-                <div>
-                    <button className="bg-[#00df9a] w-[200px] rounded-md px-4 py-2 font-medium text-xl mt-4 text-black">Get Started</button>
-                </div>
+        <div className="text-center bg-cover h-screen" style={{ backgroundImage: "url('/path-to-hero-image.jpg')" }}>
+            <div className="flex flex-col justify-center items-center h-full bg-gray-900 bg-opacity-50">
+                <h1 className="text-6xl font-bold text-white">Welcome to YourCompany</h1>
+                <p className="text-xl text-gray-300 mt-4">Empowering Startups and Investors</p>
             </div>
         </div>
-    )
-}
+    );
+};
+
 export default Hero;

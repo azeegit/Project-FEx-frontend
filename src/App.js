@@ -1,21 +1,24 @@
 import React from 'react';
-import NavBar from './components/navbar';
-import Hero from './components/Hero';
-import Analytics from './components/Analytics';
-import Newsletter from './components/Newsletter';
-import Cards from './components/Cards';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LandingPage from './components/landingpage';
+import SignUpSelection from './components/SignUpSelection';
+import SignUpStartup from './components/SignUpStartup';
+import SignUpInvestor from './components/SignUpInvestor';
 
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <NavBar />
-      <Hero/>
-      <Analytics/>
-      <Newsletter/>
-      <Cards/>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/signup" element={<SignUpSelection />} />
+          <Route path="/signup/startup" element={<SignUpStartup />} />
+          <Route path="/signup/investor" element={<SignUpInvestor />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
