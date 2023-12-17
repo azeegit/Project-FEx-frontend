@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Project-FEx-frontend/static/css/main.4fae050a.css",
-    "main.js": "/Project-FEx-frontend/static/js/main.932629b3.js",
+    "main.js": "/Project-FEx-frontend/static/js/main.69942bc5.js",
     "static/media/domenico-gentile-8QK6sAe-46Y-unsplash.jpg": "/Project-FEx-frontend/static/media/domenico-gentile-8QK6sAe-46Y-unsplash.fbf6b1cad7ba162e3212.jpg",
     "static/media/jan-antonin-kolar-vLxXvapupqI-unsplash.jpg": "/Project-FEx-frontend/static/media/jan-antonin-kolar-vLxXvapupqI-unsplash.4b6eb16c33bb755c509e.jpg",
     "index.html": "/Project-FEx-frontend/index.html",
     "main.4fae050a.css.map": "/Project-FEx-frontend/static/css/main.4fae050a.css.map",
-    "main.932629b3.js.map": "/Project-FEx-frontend/static/js/main.932629b3.js.map"
+    "main.69942bc5.js.map": "/Project-FEx-frontend/static/js/main.69942bc5.js.map"
   },
   "entrypoints": [
     "static/css/main.4fae050a.css",
-    "static/js/main.932629b3.js"
+    "static/js/main.69942bc5.js"
   ]
 }
