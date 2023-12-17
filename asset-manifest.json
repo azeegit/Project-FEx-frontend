@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "./static/css/main.4fae050a.css",
-    "main.js": "./static/js/main.b41e8f0d.js",
+    "main.css": "./static/css/main.187f8ce2.css",
+    "main.js": "./static/js/main.e4bb433e.js",
     "static/media/domenico-gentile-8QK6sAe-46Y-unsplash.jpg": "./static/media/domenico-gentile-8QK6sAe-46Y-unsplash.fbf6b1cad7ba162e3212.jpg",
     "static/media/jan-antonin-kolar-vLxXvapupqI-unsplash.jpg": "./static/media/jan-antonin-kolar-vLxXvapupqI-unsplash.4b6eb16c33bb755c509e.jpg",
     "index.html": "./index.html",
-    "main.4fae050a.css.map": "./static/css/main.4fae050a.css.map",
-    "main.b41e8f0d.js.map": "./static/js/main.b41e8f0d.js.map"
+    "main.187f8ce2.css.map": "./static/css/main.187f8ce2.css.map",
+    "main.e4bb433e.js.map": "./static/js/main.e4bb433e.js.map"
   },
   "entrypoints": [
-    "static/css/main.4fae050a.css",
-    "static/js/main.b41e8f0d.js"
+    "static/css/main.187f8ce2.css",
+    "static/js/main.e4bb433e.js"
   ]
 }
