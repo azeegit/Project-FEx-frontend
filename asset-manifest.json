@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "./static/css/main.187f8ce2.css",
-    "main.js": "./static/js/main.1b9028fc.js",
-    "static/media/domenico-gentile-8QK6sAe-46Y-unsplash.jpg": "./static/media/domenico-gentile-8QK6sAe-46Y-unsplash.fbf6b1cad7ba162e3212.jpg",
+    "main.css": "./static/css/main.ec5d17dc.css",
+    "main.js": "./static/js/main.98145b38.js",
+    "static/media/raul-varzar-s-EkKaf208w-unsplash.jpg": "./static/media/raul-varzar-s-EkKaf208w-unsplash.c48b718ec986a065e7d5.jpg",
     "static/media/jan-antonin-kolar-vLxXvapupqI-unsplash.jpg": "./static/media/jan-antonin-kolar-vLxXvapupqI-unsplash.4b6eb16c33bb755c509e.jpg",
     "index.html": "./index.html",
-    "main.187f8ce2.css.map": "./static/css/main.187f8ce2.css.map",
-    "main.1b9028fc.js.map": "./static/js/main.1b9028fc.js.map"
+    "main.ec5d17dc.css.map": "./static/css/main.ec5d17dc.css.map",
+    "main.98145b38.js.map": "./static/js/main.98145b38.js.map"
   },
   "entrypoints": [
-    "static/css/main.187f8ce2.css",
-    "static/js/main.1b9028fc.js"
+    "static/css/main.ec5d17dc.css",
+    "static/js/main.98145b38.js"
   ]
 }
