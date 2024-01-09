@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const InvestorForm = () => {
     const [formData, setFormData] = useState({
@@ -8,21 +9,51 @@ const InvestorForm = () => {
         organization: '',
         investmentInterests: ''
     });
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission logic
-        console.log(formData);
+        try {
+            const response = await fetch('http://localhost:8080/investors', { // Adjust URL as needed
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to sign up');
+            }
+
+            console.log('Investor Signup successful');
+            setIsSubmitted(true);
+            setTimeout(() => {
+                navigate('/login');
+            }, 2000);
+        } catch (error) {
+            console.error('Signup failed:', error);
+        }
     };
 
+    if (isSubmitted) {
+        return (
+            <div className="container mx-auto px-4">
+                <h2 className="text-xl font-bold">Successfully signed up as an Investor!</h2>
+            </div>
+        );
+    }
+
     return (
+        // ... existing form code ...
         <div className="container mx-auto px-4">
-            <form onSubmit={handleSubmit} className="max-w-xl mx-auto mt-10">
-                <h2 className="text-2xl font-bold mb-6">Investor Sign Up</h2>
+            <form onSubmit={handleSubmit} className="max-w-xl mx-auto mt-10 grid grid-cols-2 gap-4">
+                
                 {Object.keys(formData).map((key) => (
                     <div key={key} className="mb-4">
                         <label htmlFor={key} className="block text-gray-700 text-sm font-bold mb-2 capitalize">

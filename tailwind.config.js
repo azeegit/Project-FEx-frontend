@@ -4,6 +4,11 @@ module.exports = {
   theme: {
     extend: {},
   },
+  theme: {  
+    fontFamily: {
+      Poppins: "Poppins"
+     }
+  },
   plugins: [],
 }
 
