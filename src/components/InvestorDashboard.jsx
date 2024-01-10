@@ -1,99 +1,95 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import NavBar from './navbar';
 
 const InvestorDashboard = () => {
     const [investor, setInvestor] = useState(null);
     const [applications, setApplications] = useState([]);
     const navigate = useNavigate();
+    const investorId = localStorage.getItem('Iid');
+    const token = localStorage.getItem('jwtToken');
 
     useEffect(() => {
-        const token = localStorage.getItem('jwtToken');
-        const investorId = localStorage.getItem('Iid'); // Retrieve the investor ID
-
-        const fetchInvestorDetails = async () => {
+        const fetchInvestorDetailsAndApplications = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/investors/${investorId}`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
+                // Fetch investor details
+                const investorResponse = await fetch(`http://localhost:8080/investors/${investorId}`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
                 });
-                if (!response.ok) {
-                    throw new Error('Failed to fetch investor details');
-                }
-                const investorData = await response.json();
+                const investorData = await investorResponse.json();
                 setInvestor(investorData);
-            } catch (error) {
-                console.error('Error fetching investor details:', error);
-            }
-        };
-        
 
-        // Fetch investor details
-        // Fetch investor applications
-        const fetchInvestorApplications = async () => {
-            try {
-                const response = await fetch(`http://localhost:8080/investors/${investorId}/applications`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
+                // Fetch investor's applications
+                const applicationsResponse = await fetch(`http://localhost:8080/investors/${investorId}/applications`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
                 });
-                if (!response.ok) {
-                    throw new Error('Failed to fetch applications');
-                }
-                const appsData = await response.json();
-                setApplications(appsData);
+                const applicationsData = await applicationsResponse.json();
+                setApplications(applicationsData);
             } catch (error) {
-                console.error('Error fetching applications:', error);
+                console.error('Error fetching data:', error);
             }
         };
 
-        fetchInvestorApplications();
-        fetchInvestorDetails();
-    }, []);
+        fetchInvestorDetailsAndApplications();
+    }, [investorId, token]);
+
+    const navigateToCampaignList = () => {
+        navigate('/investors/campaigns/all'); // Adjust this to your route for listing all campaigns
+    };
 
     const handleLogout = () => {
-        localStorage.removeItem('jwtToken'); // Logout handling
+        localStorage.removeItem('jwtToken');
+        localStorage.removeItem('Iid');
         navigate('/login');
     };
 
-    const handleApplyClick = () => {
-        // Define the logic or navigation for applying
-        navigate('/investors/campaigns/all'); // Example navigation to an apply page
-    };
-
     if (!investor) {
-        return <div>Loading...</div>;
+        return <div className="flex justify-center items-center h-screen">
+            <div className="text-xl font-semibold">Loading...</div>
+        </div>;
     }
 
     return (
-        <div className="investor-dashboard">
-            {/* Investor details */}
-            <div>Welcome, {investor.name}</div>
+        <div className="investor-dashboard min-h-screen bg-gray-100">
+            <NavBar fixed />
+            <div className="pt-20 container mx-auto px-4">
+                <div className="bg-white shadow rounded-lg p-6 mb-6">
+                    <h1 className="text-2xl font-bold text-gray-800 mb-4">Welcome, {investor.name}</h1>
+                    <button onClick={navigateToCampaignList} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                        View All Campaigns
+                    </button>
+                </div>
 
-            {/* Applications display */}
-            <div>
-                <h2>Applications:</h2>
-                {applications.length > 0 ? (
-                    applications.map(app => (
-                        <div key={app.id}>
-                            Campaign: {app.campaignName}
-                            {/* Display other application details */}
-                        </div>
-                    ))
-                ) : (
-                    <div>
-                        <p>No applications</p>
-                        <button onClick={handleApplyClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                            Apply
-                        </button>
+                <div className="bg-white shadow rounded-lg p-6 mb-6">
+                    <h2 className="text-xl font-bold text-gray-800 mb-4">Your Applications:</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        {applications.map(application => (
+                            <div key={application.id} className="bg-gray-200 rounded-lg p-4 mb-4">
+                                <div>
+                                    <p className="font-bold text-gray-700">{application.campaignName}</p>
+                                    <p>{application.campaignDescription}</p>
+                                    {/* Display investor form details */}
+                                    <div className="mt-4">
+                                        <p><strong>Investor Request:</strong> {application.investorRequest}</p>
+                                        <p><strong>Giving Amount:</strong> {application.investorGivingAmount}</p>
+                                        <p><strong>Contact Details:</strong> {application.investorDetailsToContact}</p>
+                                        {/* Include other details as required */}
+                                    </div>
+                                </div>
+                                <span className={application.status === 'ACCEPTED' ? "text-green-500 font-bold" : "text-gray-500"}>
+                                    {application.status}
+                                </span>
+                            </div>
+                        ))}
                     </div>
-                )}
-            </div>
+                </div>
 
-            <button onClick={handleLogout} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                Logout
-            </button>
-            
+                <div className="text-center">
+                    <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+                        Logout
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };

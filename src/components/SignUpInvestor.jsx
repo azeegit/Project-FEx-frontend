@@ -1,9 +1,12 @@
 import React from 'react';
 import InvestorForm from './InvestorForm'; // Adjust the path as needed
 import backgroundImage from '../assets/jan-antonin-kolar-vLxXvapupqI-unsplash.jpg'; // Ensure the path is correct
+import NavBar from './navbar'; // Adjust the path as needed
 
 const SignUpInvestor = () => {
   return (
+    <div className='min-h-screen'>
+      <NavBar/>
     <div className='min-h-screen py-40' style={{
       backgroundImage: 'linear-gradient(115deg, #9f7aea, #fee2fe)',
     }}>
@@ -18,6 +21,7 @@ const SignUpInvestor = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

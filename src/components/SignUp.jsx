@@ -50,44 +50,50 @@ const SignUp = () => {
 
     if (isSubmitted) {
         return (
-            <div className="container mx-auto px-4">
-                <h2 className="text-xl font-bold">Successfully signed up!</h2>
+            <div className="container mx-auto px-4 py-10">
+                <h2 className="text-xl font-bold text-center">Successfully signed up!</h2>
             </div>
         );
     }
 
     return (
-        <div className="container mx-auto px-4">
-            <form onSubmit={handleSubmit} className="max-w-xl mx-auto mt-10 grid grid-cols-2 gap-4">
+        <div className="container mx-auto px-4 py-10">
+            <form onSubmit={handleSubmit} className="max-w-2xl mx-auto  bg-white shadow-lg p-6 rounded-lg">
                 
-                {Object.keys(formData).map((key) => (
-                    <div key={key} className="mb-4 w-full">
-                        <label htmlFor={key} className="block text-gray-700 text-sm font-bold mb-2 capitalize">
-                            {key.replace(/([A-Z])/g, ' $1').trim()}
-                        </label>
-                        <input
-                            type={key === 'password' ? 'password' : 'text'}
-                            id={key}
-                            name={key}
-                            value={formData[key]}
-                            onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        />
-                    </div>
-                ))}
-                <div className="mb-4">
-          <input
-            type="checkbox"
-            id="terms"
-            name="terms"
-            value={isTermsAccepted}
-            onChange={() => setIsTermsAccepted(!isTermsAccepted)}
-          />
-          <label htmlFor="terms" className="text-sm font-medium text-gray-700">
-            I accept the terms and conditions
-          </label>
-        </div>
-                <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {Object.keys(formData).map((key) => (
+                        <div key={key} className="mb-4">
+                            <label htmlFor={key} className="block text-gray-700 text-sm font-bold mb-2 capitalize">
+                                {key.replace(/([A-Z])/g, ' $1').trim()}
+                            </label>
+                            <input
+                                type={key === 'password' ? 'password' : 'text'}
+                                id={key}
+                                name={key}
+                                value={formData[key]}
+                                onChange={handleChange}
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            />
+                        </div>
+                    ))}
+                </div>
+                
+                <div className="mb-4 flex items-center">
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        name="terms"
+                        checked={isTermsAccepted}
+                        onChange={() => setIsTermsAccepted(!isTermsAccepted)}
+                        className="mr-2"
+                    />
+                    <label htmlFor="terms" className="text-sm font-medium text-gray-700">
+                        I accept the terms and conditions
+                    </label>
+                </div>
+
+                <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
                     Sign Up
                 </button>
             </form>

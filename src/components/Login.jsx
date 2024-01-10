@@ -42,21 +42,21 @@ const Login = () => {
     };
 
     return (
-        <div className="container mx-auto px-4">
-            <form onSubmit={handleSubmit} className="max-w-sm mx-auto my-10">
-                <h2 className="text-center text-3xl font-bold mb-6">Login</h2>
+        <div className="container mx-auto px-4 h-screen flex justify-center items-center bg-gray-300">
+            <form onSubmit={handleSubmit} className="max-w-md w-full bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <h2 className="text-center text-3xl font-bold mb-6 text-gray-800">Login</h2>
 
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2">
                         User Type
                     </label>
                     <select 
-                        className="shadow border rounded w-full py-2 px-3 text-gray-700"
+                        className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:border-blue-300"
                         value={userType} 
                         onChange={(e) => setUserType(e.target.value)}
                     >
-                        <option value="startup">startup</option>
-                        <option value="investor">investor</option>
+                        <option value="startup">Startup</option>
+                        <option value="investor">Investor</option>
                     </select>
                 </div>
 
@@ -65,8 +65,8 @@ const Login = () => {
                         User Name
                     </label>
                     <input 
-                        type="userName" 
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                        type="text" 
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:border-blue-300" 
                         value={userName} 
                         onChange={(e) => setUserName(e.target.value)} 
                     />
@@ -78,7 +78,7 @@ const Login = () => {
                     </label>
                     <input 
                         type="password" 
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:ring focus:border-blue-300" 
                         value={password} 
                         onChange={(e) => setPassword(e.target.value)}
                     />
@@ -86,7 +86,7 @@ const Login = () => {
 
                 <div className="flex items-center justify-between">
                     <button 
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+                        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full transition duration-300 ease-in-out"
                         type="submit"
                     >
                         Login
@@ -95,6 +95,8 @@ const Login = () => {
             </form>
         </div>
     );
+
+
 };
 
 export default Login;

@@ -10,6 +10,7 @@ import InvestorDashboard from './components/InvestorDashboard';
 import CampaignList from './components/CampaignList';
 import ApplyToCampaign from './components/ApplyToCampaign';
 import CreateCampaign from './components/CreateCampaign';
+import InvestorApplication from './components/InvestorApplication';
 
 const App = () => {
   return (
@@ -25,7 +26,7 @@ const App = () => {
           <Route path="/signup/investor" element={<SignUpInvestor />} />
           
           <Route path="/investors/campaigns/all" element={<CampaignList />} />
-          <Route path="/investors/:investorId/campaigns/:campaignId/apply" element={<ApplyToCampaign />} />
+          <Route path="/investors/:investorId/campaigns/:campaignId/apply" element={<InvestorApplication />} />
           <Route path="/startups/:startupId/campaigns" element={<CreateCampaign />} />
 
         </Routes>
